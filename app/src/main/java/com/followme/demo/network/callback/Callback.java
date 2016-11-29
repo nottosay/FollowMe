@@ -1,0 +1,49 @@
+package com.followme.demo.network.callback;
+
+
+import okhttp3.ResponseBody;
+
+/**
+ * Created by wally.yan on 2015/11/8.
+ */
+public abstract class Callback<T> {
+
+    /**
+     * UI Thread
+     *
+     * @param
+     */
+    public void onStart() {
+    }
+
+
+    /**
+     * UI Thread
+     *
+     * @param
+     */
+    public void onFinish() {
+    }
+
+    /**
+     * UI Thread
+     *
+     * @param bytesWritten 以写入大小
+     * @param totalSize    总大小
+     */
+    public void onProgress(long bytesWritten, long totalSize) {
+
+    }
+
+    /**
+     * Thread Pool Thread
+     *
+     * @param ResponseBody
+     */
+    public abstract T parseResponse(ResponseBody body) throws Exception;
+
+    public abstract void onError();
+
+    public abstract void onSuccess(T response);
+
+}
